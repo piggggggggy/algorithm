@@ -31,19 +31,19 @@
 
 from collections import deque
 
-def solution(leng, wigt, trucks):
+def solution(length, weight, trucks):
     date = 1
     trucks = deque(trucks)
-    moving_truck = deque([0]*(leng-1))
+    moving_truck = deque([0]*(length-1))
     moving_truck.append(trucks[0])
-    cur_wigt = trucks.popleft()
+    cur_weight = trucks.popleft()
     trucks.append(0)
 
-    while cur_wigt:
-        cur_wigt -= moving_truck.popleft()
-        if cur_wigt + trucks[0] <= wigt:
+    while cur_weight:
+        cur_weight -= moving_truck.popleft()
+        if cur_weight + trucks[0] <= weight:
             moving_truck.append(trucks[0])
-            cur_wigt += trucks.popleft()
+            cur_weight += trucks.popleft()
             trucks.append(0)
         else:
             moving_truck.append(0)
