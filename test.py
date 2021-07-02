@@ -1,4 +1,10 @@
-a = [1,2,3,4,5,6,7]
+a = ['99', '989', '99111112', '6', '888', '1000']
 
 
-print(a[2:5])
+a = sorted(map(str, a), key=lambda x: x*3, reverse=True)
+
+
+print(a)
+
+
+
