@@ -18,10 +18,37 @@
 # 각 숫자는 1 이상 50 이하인 자연수입니다.
 # 타겟 넘버는 1 이상 1000 이하인 자연수입니다.
 
+count = 0
+result = 0
 
-
-def solution(nums, target, depth):
-    check = ["+", "-"]
+def dfs(nums, trg, depth, idx):
     n = len(nums)
-    for i in nums:
-        
+    global result
+    global count
+    if depth == n:
+        if result == trg:
+            count += 1
+        return
+
+
+    for j in range(2):
+        if j == 0:
+            result += nums[idx]
+        else:
+            result -= nums[idx]
+        dfs(nums, trg, depth+1, idx+1)
+        if j == 0:
+            result -= nums[idx]
+        else:
+            result += nums[idx]
+
+def solution(numbers, target):
+
+    dfs(numbers, target, 0, 0)
+
+    return count
+
+
+a = [1,1,1,1,1]
+b = 3
+print(solution(a, b))
